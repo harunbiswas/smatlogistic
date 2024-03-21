@@ -5,7 +5,7 @@ const stripe = new Stripe(
   { apiVersion: '2020-08-27' } // Use the latest version available
 )
 
-const host = process.env.NEXT_PUBLIC_HOST || 'http://localhost:3000'
+const host = process.env.NEXT_PUBLIC_HOST || 'https://portal.thesmartlogistics.com'
 
 export default async function handler(req, res) {
   const { method, body } = req
