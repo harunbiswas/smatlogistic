@@ -43,7 +43,7 @@ export default async function handler(req, res) {
         )}&deliveryDate=${encodeURIComponent(
           body.date
         )}&item=${encodeURIComponent(
-          body.item
+         JSON.stringify( body.item)
         )}&deliveryNote=${encodeURIComponent(
           body.note
         )}&collectedAddress1=${encodeURIComponent(
