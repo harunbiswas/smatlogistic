@@ -183,7 +183,7 @@ export default function Price({
           <span>Moving to: {postCode?.to}</span>
           <span>
             Moving Amount: {type !== 'Vehicle' && item + ' ' + '-'} Up to{' '}
-            {distance} (Miles)
+            {distance} (kilometers)
           </span>
           {type === 'Store' && (
             <span>

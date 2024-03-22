@@ -107,6 +107,8 @@ export default function Quote() {
     if (error) {
       console.error(error)
     } else {
+
+      
       // Send the token to your server to create a Checkout session
       const response = await createCheckoutSession({
         amount: price,
@@ -121,13 +123,15 @@ export default function Quote() {
         data,
       })
 
+
+
       // Redirect to the Checkout page
       const sessionId = response.sessionId
       const { error: redirectToCheckoutError } = stripe.redirectToCheckout({
         sessionId,
       })
 
-      console.log(error)
+     
 
       if (redirectToCheckoutError) {
         console.error(redirectToCheckoutError)

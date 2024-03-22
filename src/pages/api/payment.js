@@ -5,7 +5,7 @@ const stripe = new Stripe(
   { apiVersion: '2020-08-27' } // Use the latest version available
 )
 
-const host = process.env.NEXT_PUBLIC_HOST || 'https://portal.thesmartlogistics.com'
+const host = 'https://portal.thesmartlogistics.com'
 
 export default async function handler(req, res) {
   const { method, body } = req
@@ -29,8 +29,8 @@ export default async function handler(req, res) {
           },
         ],
         mode: 'payment',
-        cancel_url: `${host}/error`,
-        success_url: `${host}/success?sessionId={CHECKOUT_SESSION_ID}&firstName=${encodeURIComponent(
+        cancel_url: `https://portal.thesmartlogistics.com/error`,
+        success_url: `https://portal.thesmartlogistics.com/success?sessionId={CHECKOUT_SESSION_ID}&firstName=${encodeURIComponent(
           body.about.fName
         )}&lastName=${encodeURIComponent(
           body.about.lName
@@ -84,7 +84,7 @@ export default async function handler(req, res) {
           type: body.type,
 
           deliveryDate: body.date,
-          item: body.item,
+          item: JSON.stringify(body.item),
           deliveryNote: body.note,
 
           collectedAddress1: body.fromInfo.address1,
