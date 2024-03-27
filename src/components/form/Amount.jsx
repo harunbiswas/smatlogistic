@@ -51,7 +51,7 @@ export default function Amount({
 
   return (
     <div className='quote-form'>
-      <h4 className='title'>Move Amount</h4>
+      {/* <h4 className='title'>Move Amount</h4> */}
 
       <div className='quote-form-wrp'>
         <div className='quote-form-group'>
@@ -63,15 +63,15 @@ export default function Amount({
           )||
            <div className='quote-form-wrp'>
           <div className='quote-form-group'>
-            <label htmlFor='from'>
-              Delivery notes <span></span>
+            <label htmlFor='from'>Vehicle Info
+               <span></span>
             </label>
             <input
               value={note}
               onChange={e => {
                 setNote(e.target.value)
               }}
-              placeholder=' Delivery notes'
+              placeholder=' Vehicle Info'
               id='from'
             />
           </div>

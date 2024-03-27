@@ -20,7 +20,7 @@ export default function Review() {
 
 
   return (
-    <div className='home-contact'>
+    <div className='home-contac'>
       <div className='home-contact-card'>     
       
 <div className="trustpilot-widget" data-locale="en-GB" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6048a55782d4930001d2fdfe" data-style-height="52px" data-style-width="100%">

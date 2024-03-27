@@ -35,8 +35,8 @@ async function sendEmail1(queryParams, recipientEmail) {
   const mailOptions = {
     from: 'support@thesmartlogistics.com',
     to: recipientEmail,
-    subject: 'Subject of Email 1',
-    text: 'Thnaks for the order. your session id is: ' + queryParams.sessionId,
+    subject: 'Order Successfully Processed',
+    text: 'Thnaks for the order. your order id is: ' + queryParams.sessionId + "\n\n" +'Order confirmed:\n\n' + formatQueryParams(queryParams),
   }
 
   await transporter.sendMail(mailOptions)
@@ -47,7 +47,7 @@ async function sendEmail2(queryParams, recipientEmail) {
   const mailOptions = {
     from: 'support@thesmartlogistics.com',
     to: 'support@thesmartlogistics.com',
-    subject: 'Subject of Email 2',
+    subject: 'You Got New Transport Order From thesmartlogistics ',
     text: 'Order confirmed:\n\n' + formatQueryParams(queryParams),
   }
 

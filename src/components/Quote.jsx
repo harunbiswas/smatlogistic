@@ -4,6 +4,7 @@ import { FaChair } from 'react-icons/fa6'
 import { GiSofa } from 'react-icons/gi'
 import { IoBed } from 'react-icons/io5'
 import { MdNearbyError, MdOutlineTableRestaurant } from 'react-icons/md'
+import { BiCabinet } from "react-icons/bi";
 import { PiTelevisionFill } from 'react-icons/pi'
 import About from './About'
 import Price from './Price'
@@ -68,7 +69,7 @@ export default function Quote() {
     { title: 'Boxe', icon: <FaBox /> },
     { title: 'Table', icon: <MdOutlineTableRestaurant /> },
     { title: 'Chair', icon: <FaChair /> },
-    { title: 'Wardrobe', icon: <MdNearbyError /> },
+    { title: 'Wardrobe', icon: <BiCabinet /> },
     { title: 'Bed ', icon: <IoBed /> },
     { title: 'Television', icon: <PiTelevisionFill /> },
   ])

@@ -30,8 +30,8 @@ export default function Success() {
       <div className='transaction-details'>
         <h2>Transaction Details:</h2>
         <ul>
-          <li>Session ID: {router.query.sessionId}</li>
-          <li>First Name: {router.query.firstName}</li>
+          <li>Order Id ID: {router.query.sessionId}</li>
+          <li>Name: {router.query.firstName} {router.query.lastName} </li>
           {/* Add more details as needed */}
         </ul>
       </div>

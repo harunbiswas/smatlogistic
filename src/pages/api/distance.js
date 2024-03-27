@@ -13,7 +13,7 @@ export default async function distance(req, res) {
       route.legs.reduce((acc, leg) => acc + leg.distance.value, 0) / 1000 // Convert meters to kilometers
 
     const mile = kilometersToMiles(distance)
-    res.status(200).json(mile.toFixed())
+    res.status(200).json(distance.toFixed())
   } catch (error) {
     res.status(500).json(error)
   }
