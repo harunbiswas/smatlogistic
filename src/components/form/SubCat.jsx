@@ -1,5 +1,7 @@
 import { GoPlus } from 'react-icons/go'
 import { MdNearbyError } from 'react-icons/md'
+import { BiSolidCustomize } from "react-icons/bi";
+import { MdDelete } from "react-icons/md";
 
 import { useEffect, useState } from 'react'
 
@@ -30,6 +32,19 @@ export default function SubCat({ item, setItem, subCat, setSubCat }) {
       setActive(updatedItems)
     }
   }
+
+  const deleteSubCat = (index) => {
+    const updatedSubCat = [...subCat];
+    updatedSubCat.splice(index, 1);
+    setSubCat(updatedSubCat);
+  };
+
+  const deleteItem = (title) => {
+    const updatedSubCat = item.filter(item => item.title !== title);
+    setItem(updatedSubCat);
+  };
+
+  console.log(item, subCat)
   return (
     <ul className='subcat'>
       {subCat.map((d, i) => (
@@ -42,6 +57,12 @@ export default function SubCat({ item, setItem, subCat, setSubCat }) {
           <button onClick={() => handleItemClick(d.title)}>
             {d.icon}
             <span>{d.title}</span>
+            {d.delatable &&<div className="del" onClick={(e)=>{
+              deleteSubCat(i);
+              deleteItem(d.title)
+            }}>
+              <MdDelete />
+            </div>}
           </button>
         </li>
       ))}
@@ -64,13 +85,13 @@ export default function SubCat({ item, setItem, subCat, setSubCat }) {
             setIsAdd(false)
             value &&
               setSubCat(prev => {
-                return [...prev, { title: value, icon: <MdNearbyError /> }]
+                return [...prev, { title: value, icon: <BiSolidCustomize />, delatable: true }]
               })
 
             value && handleItemClick(value)
           }}
         >
-          <input value={value} onChange={e => setValue(e.target.value)} />
+          <input value={value} autoFocus onChange={e => setValue(e.target.value)} />
         </form>
       )}
     </ul>

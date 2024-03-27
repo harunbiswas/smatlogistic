@@ -1,5 +1,6 @@
 import ContactCard from './ContactCard'
 import Quote from './Quote'
+import Review from './Review'
 
 export default function HomeComp() {
   return (
@@ -10,7 +11,13 @@ export default function HomeComp() {
             <h3>Get Online Quote</h3>
             <Quote />
           </div>
+
+          <div className="contact-wrp">
           <ContactCard />
+          <Review />
+
+          </div>
+         
         </div>
       </div>
     </main>

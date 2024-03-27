@@ -57,7 +57,7 @@ export default function About({
         <div className='quote-form-wrp'>
           <div className='quote-form-group'>
             <label htmlFor='Number'>
-              Number <span>*</span>
+             Phone Number <span>*</span>
             </label>
             <input
               placeholder='Number'

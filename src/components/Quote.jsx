@@ -30,7 +30,7 @@ const createCheckoutSession = async body => {
 export default function Quote() {
   const [condition, setCondition] = useState(false)
   const [basePrice, setBasePrice] = useState(0)
-  const numbers = [1, 2, 3, 4, 5]
+  const numbers = [1, 2, 3, 4]
   const [active, setActive] = useState(1)
   const [type, setType] = useState(null)
   const [postCode, setPostCode] = useState({
@@ -72,6 +72,8 @@ export default function Quote() {
     { title: 'Bed ', icon: <IoBed /> },
     { title: 'Television', icon: <PiTelevisionFill /> },
   ])
+  const [ueSubCat, setUeSubCat]= useState([])
+  const [country, setCountry] = useState('')
 
   const [data, setData] = useState([
     {
@@ -121,6 +123,7 @@ export default function Quote() {
         fromInfo,
         toInfo,
         data,
+        country
       })
 
 
@@ -170,9 +173,13 @@ export default function Quote() {
               setNote={setNote}
               date={date}
               setDate={setDate}
+              country={country}
+              setCountry={setCountry}
+              ueSubCat={ueSubCat}
+              setUeSubCat={setUeSubCat}
             />
           )) ||
-          (active === 3 && (
+          (active === 4 && (
             <Price
               data={data}
               setData={setData}
@@ -186,7 +193,7 @@ export default function Quote() {
               setBasePrice={setBasePrice}
             />
           )) ||
-          (active === 4 && (
+          (active === 3 && (
             <About
               about={about}
               setAbout={setAbout}
@@ -216,29 +223,38 @@ export default function Quote() {
         )}
         {type && (
           <button
-            onClick={e => {
+            onClick={async e => {
               if (active === 2) {
-                if (!values.postcodeRegex.test(postCode?.from)) {
+                let error = false
+            
+                if (!await values.checkPostCode(postCode?.from)) {
                   setErrors(prev => {
                     return {
                       ...prev,
                       from: true,
                     }
                   })
+                  error = true
                 }
 
-                if (!values.postcodeRegex.test(postCode?.to)) {
+                
+
+                if (!await values.checkPostCode(postCode?.to)) {
                   setErrors(prev => {
                     return {
                       ...prev,
                       to: true,
                     }
                   })
-
-                  return
+                  error = true
+               
                 }
-                setActive(3)
-              } else if (active === 5) {
+                if(!error){
+                 
+                  setActive(3)
+                }
+                
+              } else if (active === 4) {
                 handleSubmit(e)
               } else {
                 setActive((active < 5 && active + 1) || active)
@@ -250,7 +266,7 @@ export default function Quote() {
                 (!postCode.from ||
                   !postCode.to ||
                   (type !== 'Vehicle' && !item))) ||
-              (active === 4 &&
+              (active === 3 &&
                 (!about.fName ||
                   !condition ||
                   !about.lName ||
@@ -262,7 +278,7 @@ export default function Quote() {
                   !toInfo.city))
             }
           >
-            {(active === 5 && 'Make Payment') || 'Next'}
+            {(active === 4 && 'Make Payment') || 'Next'}
           </button>
         )}
       </div>

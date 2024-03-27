@@ -1,4 +1,5 @@
 import { FaCarSide, FaStoreAlt } from 'react-icons/fa'
+import { GiEuropeanFlag } from "react-icons/gi";
 import { IoHome } from 'react-icons/io5'
 
 import {
@@ -18,10 +19,10 @@ export default function Type({ type, setType, setItem }) {
     },
     {
       name: 'EU Moves',
-      icon: <SiRotaryinternational />,
+      icon: <GiEuropeanFlag />,
     },
     {
-      name: 'Store',
+      name: 'Storage',
       icon: <FaStoreAlt />,
     },
     {

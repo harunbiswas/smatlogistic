@@ -65,7 +65,7 @@
   padding: 100px;
 
   @media screen and (max-width: 768px) {
-    padding: 10px;
+    padding: 40px 10px;
   }
 
   &-wrp {
@@ -115,7 +115,7 @@
         }
 
         a {
-          background-color: $red;
+          background-color: $secendary;
           width: 120px;
           display: flex;
           align-items: center;
@@ -219,17 +219,17 @@
           justify-content: center;
           padding: 10px 30px;
           background-color: $white;
-          border: 2px solid $red;
+          border: 2px solid $secendary;
           border-radius: 4px;
           font-size: 18px;
           font-weight: 500;
-          color: $red;
+          color: $secendary;
           transition: 0.3s;
           cursor: pointer;
 
           &:hover {
             color: $white;
-            background-color: $red;
+            background-color: $secendary;
           }
 
           &.next {
@@ -369,6 +369,13 @@
         svg {
           color: White;
         }
+      }
+
+
+      @media screen and (max-width: 500px) {
+        flex-direction: row;
+        height: unset;
+        justify-content: flex-start;
       }
     }
   }
@@ -516,6 +523,21 @@
       justify-content: center;
       gap: 10px;
       cursor: pointer;
+      position: relative;
+
+      &>.del{
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        cursor: default;
+        color: $red;
+        display: none;
+
+
+        svg{
+          color: $red;
+        }
+      }
 
       span {
         color: $grey;
@@ -525,6 +547,12 @@
       svg {
         font-size: 22px;
         color: $theme;
+      }
+    }
+
+    &:hover{
+      button >.del{
+        display: block;
       }
     }
 
@@ -601,3 +629,13 @@ li {
 .home-button:hover {
   background-color: $theme;
 }
+
+
+.contact-wrp{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+
+}
+

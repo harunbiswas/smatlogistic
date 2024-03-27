@@ -1,6 +1,7 @@
 import Dropdown from '../Dropdown'
+import SubCat from './SubCat'
 
-export default function UeAmount({ item, setItem, note, setNote }) {
+export default function UeAmount({ item, setItem, country, setCountry, note, setNote, setSubCat, subCat }) {
   const data = [
     'France',
     'Italy',
@@ -18,27 +19,28 @@ export default function UeAmount({ item, setItem, note, setNote }) {
   return (
     <div className='ue-amount'>
       <Dropdown
-        prev={item}
+        prev={country}
         handler={d => {
-          setItem(d)
+          setCountry(d)
         }}
         data={data}
       />
       <div className='quote-form-wrp'>
         <div className='quote-form-group'>
           <label htmlFor='from'>
-            Delivery notes <span></span>
+          List items to be transported<span></span>
           </label>
-          <input
-            value={note}
-            onChange={e => {
-              setNote(e.target.value)
-            }}
-            placeholder=' Delivery notes'
-            id='from'
-          />
+          <SubCat
+                subCat={subCat}
+                setSubCat={setSubCat}
+                item={item}
+                setItem={setItem}
+              />
         </div>
       </div>
     </div>
   )
 }
+
+
+

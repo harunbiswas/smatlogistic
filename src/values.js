@@ -1,9 +1,23 @@
 const values = {}
 
 values.postcodeRegex =
-  /^[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}$/
+/^[0-9A-Za-z\s-]+$/
 
-// values.base_url = 'http://localhost:3000/api'
-values.base_url = 'https://portal.thesmartlogistics.com/api'
+
+
+values.checkPostCode = async(postcode)=>{
+  const apiKey = 'AIzaSyBh1riFGXiryZ5VZ-sGKy4hWOl47Aw-9Wc'
+  try {
+    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${postcode}&key=${apiKey}`);
+    const data = await response.json();
+
+    return (data.status === 'OK' && data.results.length > 0);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return(false)
+  }
+}
+values.base_url = 'http://localhost:3000/api'
+// values.base_url = 'https://portal.thesmartlogistics.com/api'
 
 export default values

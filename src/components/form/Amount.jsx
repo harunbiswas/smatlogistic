@@ -18,6 +18,10 @@ export default function Amount({
   setIsDate,
   subCat,
   setSubCat,
+  country,
+  setCountry,
+  ueSubCat,
+  setUeSubCat
 }) {
   const homeData = [
     '1 Bedroom',
@@ -56,8 +60,23 @@ export default function Amount({
               {(type === 'EU Moves' && 'Select Country') || 'Amount To Move '}
               <span>*</span>
             </label>
-          )}
-          {((type === 'Home Removals' || type === 'Store') && (
+          )||
+           <div className='quote-form-wrp'>
+          <div className='quote-form-group'>
+            <label htmlFor='from'>
+              Delivery notes <span></span>
+            </label>
+            <input
+              value={note}
+              onChange={e => {
+                setNote(e.target.value)
+              }}
+              placeholder=' Delivery notes'
+              id='from'
+            />
+          </div>
+          </div> }
+          {((type === 'Home Removals' || type === 'Storage') && (
             <Dropdown
               data={(type === 'Home Removals' && homeData) || storeData}
               prev={item}
@@ -78,6 +97,10 @@ export default function Amount({
               <UeAmount
                 note={note}
                 setNote={setNote}
+                country={country}
+                setCountry={setCountry}
+                subCat={ueSubCat}
+                setSubCat={setUeSubCat}
                 item={item}
                 setItem={setItem}
               />
@@ -102,7 +125,7 @@ export default function Amount({
               setPostCode(prev => {
                 return {
                   ...prev,
-                  from: e.target.value.trim(),
+                  from: e.target.value,
                 }
               })
             }}
@@ -127,7 +150,7 @@ export default function Amount({
               setPostCode(prev => {
                 return {
                   ...prev,
-                  to: e.target.value.trim(),
+                  to: e.target.value,
                 }
               })
             }}

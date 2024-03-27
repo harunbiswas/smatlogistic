@@ -67,7 +67,7 @@ export default function Price({
       setPrice(2800 + distance * 1.3)
     } else if (type === 'Vehicle') {
       setPrice(550 + distance * 1.8)
-    } else if (type === 'Store') {
+    } else if (type === 'Storage') {
       switch (item) {
         case storeData[0]:
           setPrice(180)
@@ -119,9 +119,15 @@ export default function Price({
           setPrice(0)
       }
     } else if (type === 'Furniture & Other Items') {
-      setPrice(80 + item.length * 15 + distance * 2.5)
+
+      let length =0; 
+      item.forEach(i => {
+        length+=parseInt(i)|| 1
+      });
+     
+      setPrice(80 + length * 15 + distance * 2.5)
     } else if (type === 'Home Removals') {
-      console.log('test')
+    
       switch (item) {
         case homeData[0]:
           setPrice(360 + distance * 2.5)

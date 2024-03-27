@@ -46,6 +46,8 @@ export default async function handler(req, res) {
          JSON.stringify( body.item)
         )}&deliveryNote=${encodeURIComponent(
           body.note
+        )}&country=${encodeURIComponent(
+          body.country
         )}&collectedAddress1=${encodeURIComponent(
           body.fromInfo.address1
         )}&collectedAddress2=${encodeURIComponent(
@@ -86,6 +88,7 @@ export default async function handler(req, res) {
           deliveryDate: body.date,
           item: JSON.stringify(body.item),
           deliveryNote: body.note,
+          country:body.country,
 
           collectedAddress1: body.fromInfo.address1,
           collectedAddress2: body.fromInfo.address2,
