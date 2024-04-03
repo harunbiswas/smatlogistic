@@ -8,13 +8,13 @@ export default function Footer() {
             alt=''
           />
         </a>
-        <p className='footer-text'>The Smart Logistics and Shipping 2022.</p>
+        <p className='footer-text'>The Smart Logistics and Shipping</p>
         <p className='footer-text'>Company registration 13113412</p>
         <div className='copyright'>
           <p>
             Copyright &copy;{new Date().getFullYear()} thesmartlogistics.com |
             Design & Developed By{' '}
-            <a href='https://www.fiverr.com/hbrubel'>Harun Biswas</a>
+            <a href='https://wpmhs.com/'>WPMHS.COM</a>
           </p>
         </div>
       </div>

@@ -28,7 +28,7 @@ export default function UeAmount({ item, setItem, country, setCountry, note, set
       <div className='quote-form-wrp'>
         <div className='quote-form-group'>
           <label htmlFor='from'>
-          List items to be transported<span></span>
+          List items to be transported<span>*</span>
           </label>
           <SubCat
                 subCat={subCat}

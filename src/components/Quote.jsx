@@ -66,7 +66,7 @@ export default function Quote() {
 
   const [subCat, setSubCat] = useState([
     { title: 'Sofa', icon: <GiSofa /> },
-    { title: 'Boxe', icon: <FaBox /> },
+    { title: 'Boxes', icon: <FaBox /> },
     { title: 'Table', icon: <MdOutlineTableRestaurant /> },
     { title: 'Chair', icon: <FaChair /> },
     { title: 'Wardrobe', icon: <BiCabinet /> },
