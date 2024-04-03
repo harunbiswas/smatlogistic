@@ -92,6 +92,7 @@ export default function SubCat({ item, setItem, subCat, setSubCat }) {
           }}
         >
           <input value={value} autoFocus onChange={e => setValue(e.target.value)} />
+          <button type="submit">add</button>
         </form>
       )}
     </ul>
