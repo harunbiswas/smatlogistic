@@ -12,11 +12,16 @@ const transporter = nodemailer.createTransport({
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
-      // Send email 1
-      await sendEmail1(req.body, req.body.email)
+      if(req.body.preSend){
+        await sendEmailPre(req.body, req.body.email)
+      }else{
+        // Send email 1
+        await sendEmail1(req.body, req.body.email)
 
-      // Send email 2
-      await sendEmail2(req.body, req.body.email)
+        // Send email 2
+       await sendEmail2(req.body, req.body.email)
+      }
+   
 
       // Respond with a success message
       res.status(200).json({ message: 'Success' })
@@ -53,6 +58,19 @@ async function sendEmail2(queryParams, recipientEmail) {
 
   await transporter.sendMail(mailOptions)
 }
+
+async function sendEmailPre(queryParams, recipientEmail) {
+  // Use the Nodemailer transporter to send email 2
+  const mailOptions = {
+    from: 'support@thesmartlogistics.com',
+    to: 'support@thesmartlogistics.com',
+    subject: 'You got new customer  details',
+    text: 'customer  details:\n\n' + formatQueryParams(queryParams),
+  }
+
+  await transporter.sendMail(mailOptions)
+}
+
 
 function formatQueryParams(queryParams) {
   // Format key-value pairs from queryParams

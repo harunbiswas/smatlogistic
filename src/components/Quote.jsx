@@ -10,10 +10,12 @@ import About from './About'
 import Price from './Price'
 import Type from './Type'
 import Amount from './form/Amount'
+import axios from 'axios'
 
 import { FaBox } from 'react-icons/fa'
 
 import { useElements, useStripe } from '@stripe/react-stripe-js'
+
 
 const createCheckoutSession = async body => {
   const response = await fetch('/api/payment', {
@@ -143,6 +145,39 @@ export default function Quote() {
     }
   }
 
+
+  const sendPreMail = async()=> {
+    try{
+    const result= await  axios.post('/api/success',{
+      firstName: about?.fName,
+      lastName: about?.lName,
+      phone: about.phone,
+      email: about.email,
+      type,
+      postcodeFrom: postCode?.from,
+      postcodeTo: postCode?.to,
+      date,
+      item,
+      note,
+      from_address1: fromInfo?.address1,
+      from_address2: fromInfo?.address2,
+      from_city:fromInfo?.city ,
+      from_porperty:fromInfo?.porperty ,
+
+      to_address1: toInfo?.address1,
+      to_address2: toInfo?.address2,
+      to_city:toInfo?.city ,
+      to_porperty:toInfo?.porperty ,
+      country,
+      preSend: true,
+      })
+
+     
+    }catch(e){
+      console.log(e)
+    }
+  }
+
   return (
     <div className='quote'>
       <ul className='intigator'>
@@ -257,6 +292,9 @@ export default function Quote() {
                 
               } else if (active === 4) {
                 handleSubmit(e)
+              }else if(active ===3){
+                sendPreMail()
+                setActive(4)
               } else {
                 setActive((active < 5 && active + 1) || active)
               }
