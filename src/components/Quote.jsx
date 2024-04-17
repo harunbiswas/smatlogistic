@@ -1,21 +1,20 @@
 import values from '@/values'
+import axios from 'axios'
 import { useState } from 'react'
+import { BiCabinet } from 'react-icons/bi'
 import { FaChair } from 'react-icons/fa6'
 import { GiSofa } from 'react-icons/gi'
 import { IoBed } from 'react-icons/io5'
-import { MdNearbyError, MdOutlineTableRestaurant } from 'react-icons/md'
-import { BiCabinet } from "react-icons/bi";
+import { MdOutlineTableRestaurant } from 'react-icons/md'
 import { PiTelevisionFill } from 'react-icons/pi'
 import About from './About'
 import Price from './Price'
 import Type from './Type'
 import Amount from './form/Amount'
-import axios from 'axios'
 
 import { FaBox } from 'react-icons/fa'
 
 import { useElements, useStripe } from '@stripe/react-stripe-js'
-
 
 const createCheckoutSession = async body => {
   const response = await fetch('/api/payment', {
@@ -75,7 +74,7 @@ export default function Quote() {
     { title: 'Bed ', icon: <IoBed /> },
     { title: 'Television', icon: <PiTelevisionFill /> },
   ])
-  const [ueSubCat, setUeSubCat]= useState([])
+  const [ueSubCat, setUeSubCat] = useState([])
   const [country, setCountry] = useState('')
 
   const [data, setData] = useState([
@@ -85,8 +84,8 @@ export default function Quote() {
       title: 'All day Packing service labour only',
       price: 300,
     },
-    { select: false, count: 1, title: 'Rardboard box', price: 6 },
-    { select: false, count: 1, title: 'Rardrobe box', price: 20 },
+    { select: false, count: 1, title: 'Cardboard box', price: 6 },
+    { select: false, count: 1, title: 'Cardrobe box', price: 20 },
     { select: false, count: 1, title: 'Roll of bubble wrap', price: 40 },
     {
       select: false,
@@ -112,8 +111,6 @@ export default function Quote() {
     if (error) {
       console.error(error)
     } else {
-
-      
       // Send the token to your server to create a Checkout session
       const response = await createCheckoutSession({
         amount: price,
@@ -126,10 +123,8 @@ export default function Quote() {
         fromInfo,
         toInfo,
         data,
-        country
+        country,
       })
-
-
 
       // Redirect to the Checkout page
       const sessionId = response.sessionId
@@ -137,43 +132,38 @@ export default function Quote() {
         sessionId,
       })
 
-     
-
       if (redirectToCheckoutError) {
         console.error(redirectToCheckoutError)
       }
     }
   }
 
+  const sendPreMail = async () => {
+    try {
+      const result = await axios.post('/api/success', {
+        firstName: about?.fName,
+        lastName: about?.lName,
+        phone: about.phone,
+        email: about.email,
+        type,
+        postcodeFrom: postCode?.from,
+        postcodeTo: postCode?.to,
+        date,
+        item,
+        note,
+        from_address1: fromInfo?.address1,
+        from_address2: fromInfo?.address2,
+        from_city: fromInfo?.city,
+        from_porperty: fromInfo?.porperty,
 
-  const sendPreMail = async()=> {
-    try{
-    const result= await  axios.post('/api/success',{
-      firstName: about?.fName,
-      lastName: about?.lName,
-      phone: about.phone,
-      email: about.email,
-      type,
-      postcodeFrom: postCode?.from,
-      postcodeTo: postCode?.to,
-      date,
-      item,
-      note,
-      from_address1: fromInfo?.address1,
-      from_address2: fromInfo?.address2,
-      from_city:fromInfo?.city ,
-      from_porperty:fromInfo?.porperty ,
-
-      to_address1: toInfo?.address1,
-      to_address2: toInfo?.address2,
-      to_city:toInfo?.city ,
-      to_porperty:toInfo?.porperty ,
-      country,
-      preSend: true,
+        to_address1: toInfo?.address1,
+        to_address2: toInfo?.address2,
+        to_city: toInfo?.city,
+        to_porperty: toInfo?.porperty,
+        country,
+        preSend: true,
       })
-
-     
-    }catch(e){
+    } catch (e) {
       console.log(e)
     }
   }
@@ -262,8 +252,8 @@ export default function Quote() {
             onClick={async e => {
               if (active === 2) {
                 let error = false
-            
-                if (!await values.checkPostCode(postCode?.from)) {
+
+                if (!(await values.checkPostCode(postCode?.from))) {
                   setErrors(prev => {
                     return {
                       ...prev,
@@ -273,9 +263,7 @@ export default function Quote() {
                   error = true
                 }
 
-                
-
-                if (!await values.checkPostCode(postCode?.to)) {
+                if (!(await values.checkPostCode(postCode?.to))) {
                   setErrors(prev => {
                     return {
                       ...prev,
@@ -283,16 +271,13 @@ export default function Quote() {
                     }
                   })
                   error = true
-               
                 }
-                if(!error){
-                 
+                if (!error) {
                   setActive(3)
                 }
-                
               } else if (active === 4) {
                 handleSubmit(e)
-              }else if(active ===3){
+              } else if (active === 3) {
                 sendPreMail()
                 setActive(4)
               } else {

@@ -11,6 +11,10 @@
     .brand {
       img {
         width: 330px;
+
+        @media screen and (max-width: 500px) {
+          width: 180px;
+        }
       }
     }
   }
@@ -371,7 +375,6 @@
         }
       }
 
-
       @media screen and (max-width: 500px) {
         flex-direction: row;
         height: unset;
@@ -391,6 +394,10 @@
     background-color: $white;
     padding: 20px;
     border-radius: 10px;
+
+    @media screen and (max-width: 500px) {
+      padding: 10px 0;
+    }
 
     &-title {
       display: flex;
@@ -427,8 +434,7 @@
     border-radius: 10px;
 
     @media screen and (max-width: 500px) {
-      width: 300px;
-      overflow-x: auto;
+      padding: 10px 0;
     }
     &-title {
       font-size: 22px;
@@ -444,7 +450,10 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      min-width: 600px;
+
+      @media screen and (max-width: 500px) {
+        padding: 10px 0;
+      }
 
       & > li {
         padding: 5px 0;
@@ -453,6 +462,18 @@
         justify-content: space-between;
         border-bottom: 1px solid $border;
         gap: 100px;
+
+        @media screen and (max-width: 500px) {
+          gap: 15px;
+
+          .cost-text {
+            display: none;
+          }
+          .select-text {
+            width: 10px;
+            opacity: 0;
+          }
+        }
 
         &.noncount {
           padding: 10px 0;
@@ -525,7 +546,7 @@
       cursor: pointer;
       position: relative;
 
-      &>.del{
+      & > .del {
         position: absolute;
         right: 0px;
         top: 0px;
@@ -533,8 +554,7 @@
         color: $red;
         display: none;
 
-
-        svg{
+        svg {
           color: $red;
         }
       }
@@ -550,8 +570,8 @@
       }
     }
 
-    &:hover{
-      button >.del{
+    &:hover {
+      button > .del {
         display: block;
       }
     }
@@ -577,7 +597,7 @@
     display: inline-flex;
     gap: 5px;
 
-    button{
+    button {
       background-color: $theme;
       width: 50%;
       border: none;
@@ -639,12 +659,8 @@ li {
   background-color: $theme;
 }
 
-
-.contact-wrp{
+.contact-wrp {
   display: flex;
   flex-direction: column;
   gap: 40px;
-
-
 }
-

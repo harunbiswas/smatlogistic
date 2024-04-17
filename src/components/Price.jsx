@@ -119,15 +119,13 @@ export default function Price({
           setPrice(0)
       }
     } else if (type === 'Furniture & Other Items') {
-
-      let length =0; 
+      let length = 0
       item.forEach(i => {
-        length+=parseInt(i)|| 1
-      });
-     
+        length += parseInt(i) || 1
+      })
+
       setPrice(80 + length * 15 + distance * 2.5)
     } else if (type === 'Home Removals') {
-    
       switch (item) {
         case homeData[0]:
           setPrice(360 + distance * 2.5)
@@ -210,8 +208,11 @@ export default function Price({
               <span className='price-bottom-body-title '>Options</span>
               <span className='price-bottom-body-title right'>Count</span>
 
-              <span className='price-bottom-body-price'>Cost (£)</span>
-              <span>Selected</span>
+              <span className='price-bottom-body-price'>
+                {' '}
+                <span className='cost-text'>Cost</span> (£)
+              </span>
+              <span className='select-text'>Selected</span>
             </li>
             {data.map((d, i) => (
               <li className={`${(!d.count && 'noncount') || ''}`} key={i}>
