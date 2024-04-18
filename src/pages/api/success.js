@@ -67,8 +67,8 @@ async function sendEmailPre(queryParams, recipientEmail) {
   // Use the Nodemailer transporter to send email 2
   const mailOptions = {
     from: 'support@thesmartlogistics.com',
-    // to: 'support@thesmartlogistics.com',
-    to: 'harunbiswasrubel@gmail.com',
+    to: 'support@thesmartlogistics.com',
+    // to: 'harunbiswasrubel@gmail.com',
     subject: 'You got new customer  details',
     text: 'customer  details:\n\n' + formatQueryParams(queryParams),
   }
