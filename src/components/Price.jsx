@@ -214,7 +214,7 @@ export default function Price({
               </span>
               <span className='select-text'>Selected</span>
             </li>
-            {data.map((d, i) => (
+            {data?.map((d, i) => (
               <li className={`${(!d.count && 'noncount') || ''}`} key={i}>
                 <span className={`price-bottom-body-title `}>{d.title}</span>
                 <div className='price-bottom-body-count'>
