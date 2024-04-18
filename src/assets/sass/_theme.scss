@@ -137,11 +137,11 @@
   // main form
   &-main {
     width: 100%;
-    min-height: calc(100vh - 500px);
+    // min-height: calc(100vh - 500px);
     background-color: $white;
     padding: 30px;
     border-radius: 10px;
-    height: max-content;
+    // height: max-content;
 
     .title {
       font-size: 24px;
@@ -468,6 +468,7 @@
         justify-content: space-between;
         border-bottom: 1px solid $border;
         gap: 100px;
+        height: 30px;
 
         @media screen and (max-width: 500px) {
           gap: 15px;
