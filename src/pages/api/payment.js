@@ -38,12 +38,12 @@ export default async function handler(req, res) {
           body.about.phone
         )}&email=${encodeURIComponent(
           body.about.email
-        )}&type=${encodeURIComponent(
-          body.type
+        )}&type=${encodeURIComponent(body.type)}&amount=${encodeURIComponent(
+          JSON.stringify(body.amount + '£')
         )}&deliveryDate=${encodeURIComponent(
           body.date
         )}&item=${encodeURIComponent(
-         JSON.stringify( body.item)
+          JSON.stringify(body.item)
         )}&deliveryNote=${encodeURIComponent(
           body.note
         )}&country=${encodeURIComponent(
@@ -88,7 +88,7 @@ export default async function handler(req, res) {
           deliveryDate: body.date,
           item: JSON.stringify(body.item),
           deliveryNote: body.note,
-          country:body.country,
+          country: body.country,
 
           collectedAddress1: body.fromInfo.address1,
           collectedAddress2: body.fromInfo.address2,

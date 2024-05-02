@@ -2,10 +2,13 @@ import nodemailer from 'nodemailer'
 
 // Nodemailer configuration
 const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false,
   service: 'gmail',
   auth: {
     user: 'shopforeco@gmail.com', // Your Gmail email address
-    pass: 'njlu esnh ztoh xabz', // Your Gmail password or app-specific password
+    pass: 'njluesnhztohxabz', // Your Gmail password or app-specific password
   },
 })
 
@@ -42,10 +45,11 @@ async function sendEmail1(queryParams, recipientEmail) {
     subject: 'Order Successfully Processed',
     text:
       'Thnaks for the order. your order id is: ' +
-      queryParams.sessionId +
       '\n\n' +
       'Order confirmed:\n\n' +
-      formatQueryParams(queryParams),
+      formatQueryParams(queryParams) +
+      '\n\n' +
+      queryParams.sessionId,
   }
 
   await transporter.sendMail(mailOptions)
@@ -69,6 +73,7 @@ async function sendEmailPre(queryParams, recipientEmail) {
     from: 'support@thesmartlogistics.com',
     to: 'support@thesmartlogistics.com',
     // to: 'harunbiswasrubel@gmail.com',
+    // to: 'mhs@wpmhs.com',
     subject: 'You got new customer  details',
     text: 'customer  details:\n\n' + formatQueryParams(queryParams),
   }
