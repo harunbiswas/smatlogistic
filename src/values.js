@@ -16,7 +16,7 @@ values.checkPostCode = async postcode => {
     return false
   }
 }
-values.base_url = 'http://localhost:3000/api'
-// values.base_url = 'https://portal.thesmartlogistics.com/api'
+// values.base_url = 'http://localhost:3000/api'
+values.base_url = 'https://portal.thesmartlogistics.com/api'
 
 export default values
