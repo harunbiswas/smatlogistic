@@ -21,7 +21,7 @@ export default function Amount({
   country,
   setCountry,
   ueSubCat,
-  setUeSubCat
+  setUeSubCat,
 }) {
   const homeData = [
     '1 Bedroom',
@@ -55,27 +55,31 @@ export default function Amount({
 
       <div className='quote-form-wrp'>
         <div className='quote-form-group'>
-          {type !== 'Vehicle' && (
+          {(type !== 'Vehicle' && (
             <label htmlFor='amount'>
-              {(type === 'EU Moves' && 'Select Country') || 'Amount To Move '}
+              {(type === 'EU Moves' && 'Select Country') ||
+                (type === 'Storage' && 'Storage space required') ||
+                'Amount To Move '}
               <span>*</span>
             </label>
-          )||
-           <div className='quote-form-wrp'>
-          <div className='quote-form-group'>
-            <label htmlFor='from'>Vehicle Info
-               <span></span>
-            </label>
-            <input
-              value={note}
-              onChange={e => {
-                setNote(e.target.value)
-              }}
-              placeholder=' Vehicle Info'
-              id='from'
-            />
-          </div>
-          </div> }
+          )) || (
+            <div className='quote-form-wrp'>
+              <div className='quote-form-group'>
+                <label htmlFor='from'>
+                  Vehicle Info
+                  <span></span>
+                </label>
+                <input
+                  value={note}
+                  onChange={e => {
+                    setNote(e.target.value)
+                  }}
+                  placeholder=' Vehicle Info'
+                  id='from'
+                />
+              </div>
+            </div>
+          )}
           {((type === 'Home Removals' || type === 'Storage') && (
             <Dropdown
               data={(type === 'Home Removals' && homeData) || storeData}

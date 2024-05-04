@@ -1,7 +1,7 @@
 export default function Header() {
   return (
     <header className='header'>
-      <div className='container'>
+      <div className=' container'>
         <div className='header-wrp'>
           <a href='https://thesmartlogistics.com/' className='brand'>
             <img
@@ -10,7 +10,7 @@ export default function Header() {
             />
           </a>
           <a href='https://thesmartlogistics.com/' className='header-btn btn'>
-            Back to website
+            Back to Home
           </a>
         </div>
       </div>

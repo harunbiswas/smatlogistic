@@ -178,7 +178,8 @@ export default function Price({
       <div className='price-top'>
         <div className='price-top-title'>
           <h4>
-            Door to Door price <span>(Including VAT)</span>
+            {(type === 'Storage' && 'Storage price ') || 'Door to Door price '}
+            <span>(Including VAT)</span>
           </h4>
           <strong>£{price}</strong>
         </div>
@@ -189,11 +190,11 @@ export default function Price({
             Moving Amount: {type !== 'Vehicle' && item + ' ' + '-'} Up to{' '}
             {distance} (miles)
           </span>
-          {type === 'Store' && (
-            <span>
+          {type === 'Storage' && (
+            <strong>
               This is the fixed storage unit sizes and monthly pricing for the
               UK only Prices include insurance up to£35k
-            </span>
+            </strong>
           )}
         </div>
       </div>

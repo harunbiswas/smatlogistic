@@ -67,7 +67,7 @@ export default function Quote() {
 
   const [subCat, setSubCat] = useState([
     { title: 'Sofa', icon: <GiSofa /> },
-    { title: 'Boxes', icon: <FaBox /> },
+    { title: 'Box', icon: <FaBox /> },
     { title: 'Table', icon: <MdOutlineTableRestaurant /> },
     { title: 'Chair', icon: <FaChair /> },
     { title: 'Wardrobe', icon: <BiCabinet /> },
@@ -232,6 +232,7 @@ export default function Quote() {
               setDate={setDate}
               condition={condition}
               setCondition={setCondition}
+              type={type}
             />
           ))}
       </div>
@@ -291,6 +292,7 @@ export default function Quote() {
                   !postCode.to ||
                   (type !== 'Vehicle' && !item))) ||
               (active === 3 &&
+                type !== 'Storage' &&
                 (!about.fName ||
                   !condition ||
                   !about.lName ||
@@ -299,7 +301,15 @@ export default function Quote() {
                   !fromInfo.address1 ||
                   !fromInfo.city ||
                   !toInfo.address1 ||
-                  !toInfo.city))
+                  !toInfo.city)) ||
+              (active === 3 &&
+                type === 'Storage' &&
+                (!about.fName ||
+                  !condition ||
+                  !about.lName ||
+                  !about.phone ||
+                  !about.email ||
+                  !date))
             }
           >
             {(active === 4 && 'Make Payment') || 'Next'}

@@ -1,11 +1,8 @@
 import { FaCarSide, FaStoreAlt } from 'react-icons/fa'
-import { GiEuropeanFlag } from "react-icons/gi";
+import { GiEuropeanFlag } from 'react-icons/gi'
 import { IoHome } from 'react-icons/io5'
 
-import {
-  SiHomeassistantcommunitystore,
-  SiRotaryinternational,
-} from 'react-icons/si'
+import { SiHomeassistantcommunitystore } from 'react-icons/si'
 
 export default function Type({ type, setType, setItem }) {
   const items = [
