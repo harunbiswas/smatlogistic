@@ -359,8 +359,17 @@
     display: flex;
     gap: 30px;
 
+    @media screen and (max-width: 1366px) {
+      display: grid;
+      grid-template-columns: 22% 22% 22% 22%;
+      grid-gap: 3%;
+      row-gap: 6%;
+    }
+
     @media screen and (max-width: 500px) {
+      display: flex;
       flex-direction: column;
+      gap: 30px;
     }
 
     button {
