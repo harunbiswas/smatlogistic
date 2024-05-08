@@ -85,7 +85,7 @@ export default function Quote() {
       price: 300,
     },
     { select: false, count: 1, title: 'Cardboard box', price: 6 },
-    { select: false, count: 1, title: 'Cardrobe box', price: 20 },
+    { select: false, count: 1, title: 'Wardrobe box', price: 20 },
     { select: false, count: 1, title: 'Roll of bubble wrap', price: 40 },
     {
       select: false,
