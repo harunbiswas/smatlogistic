@@ -90,7 +90,7 @@ export default function Quote() {
     {
       select: false,
       count: 1,
-      title: 'Assembly /Disassembly service',
+      title: 'Assembly/Disassembly per item',
       price: 40,
     },
   ])
